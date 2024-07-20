@@ -10,7 +10,8 @@ jobs:
 
         strategy:
             matrix:
-                node-version: [14.x, 16.x]
+                os: [ubuntu-latest, windows-latest, macos-latest]
+                node-version: [14.x, 16.x, 18.x]
 
         steps:
             - uses: actions/checkout@v2
@@ -26,10 +27,10 @@ jobs:
             - name: Run tests
               run: npm test
 
-            - name: Tests results
+            - name: Success results
               run: echo "All tests passed"
               if: success()
 
-            - name: Tests results
+            - name: Fail results
               run: echo "One or more tests failed"
               if: failure()
